@@ -1,6 +1,9 @@
 # Data exports
 data/
 
+# VS Code
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

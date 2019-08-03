@@ -1,10 +1,11 @@
 ## Minted.com Address Book Export
-My fiancée and I are just under 100 days until our wedding and I was trying to export the addresses that we had previously saved to [minted.com](https://minted.com) from our Save the Dates, but was dismayed to learn that there was no export feature! So I built a Python script to effectively export the saved address book.
+My fiancée and I are just under 100 days until our wedding and I was trying to export the addresses that we had previously saved to [minted.com](https://minted.com) from our Save the Dates, but was dismayed to learn that there was no export feature! 
+So I built a Python script to effectively export the saved address book.
 
 Check out my [blog post](https://medium.com/@willkarnasiewicz/wedding-planning-meets-hacking-1c95be79035e) for more info.
 
 ## Getting Started
-1. Assuming you've got Python 3.x and a GitHub account, clone the repo:
+1. Assuming you have [Python 3.6+](https://www.python.org) and a [GitHub](https://www.github.com) account, clone the repo:
 
 ```bash
 git clone https://github.com/wkarney/minted-export.git
