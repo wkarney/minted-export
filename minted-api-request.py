@@ -7,7 +7,7 @@ import pandas as pd
 # Webdriver options; set to headless
 options = Options()
 options.add_argument("--headless")
-driver = Chrome(chrome_options=options)
+driver = Chrome(options=options)
 
 # URL for minted addressbook
 url = 'https://www.minted.com/login'
