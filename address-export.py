@@ -134,8 +134,6 @@ address_book['town'] = address_book['locality'].map(lambda x: x.split(',')[0])
 
 columnsTitles = ['Name', 'Address', 'Town', 'State','Zipcode']
 
-address_book = address_book.reindex(columns=columnsTitles)
-
 address_book.to_excel('./data/minted-addresses.xlsx')
 address_book.to_csv('./data/minted-addresses.csv', index=False)
 
