@@ -19,3 +19,4 @@ six==1.15.0
 soupsieve==2.0.1
 tldextract==2.2.3
 urllib3==1.25.10
+webdriver-manager==3.2.2
