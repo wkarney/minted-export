@@ -1,5 +1,5 @@
 # Data exports
-data/
+data/*
 
 # VS Code
 .vscode
