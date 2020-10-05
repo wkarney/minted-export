@@ -36,7 +36,7 @@ It might be helpful to add them as environment variables called `minted_email` a
 To run the script:
 
 ```bash
-python minted-api-request.py
+python minted_api_request.py
 ```
 
 Running the above will scrape all of the events and output the address book fields as csv and xlsx file into a new `data/` dir of the project.
