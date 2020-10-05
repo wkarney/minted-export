@@ -1,14 +1,16 @@
+import os
+import re
+from time import sleep
+
+from bs4 import BeautifulSoup
 import pandas as pd
 from selenium import webdriver
-from bs4 import BeautifulSoup
-from time import sleep
-import re
-import os
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Webdriver options; set to headless
 options = webdriver.ChromeOptions()
-options.add_argument("--headless")
-driver = webdriver.Chrome(options=options)
+# options.add_argument("--headless")
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 # URL for minted addressbook
 url = 'https://www.minted.com/addressbook/my-account/finalize/0?it=utility_nav'
