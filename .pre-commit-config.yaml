@@ -33,4 +33,5 @@ repos:
             - --disable=C0114 # missing-module-docstring convention
             - --argument-rgx=[a-z0-9_]{1,30}$
             - --disable=W0702 # bare exceptions 
+            - --disable=R0801 # Similar lines are fine since two similar scripts provided
   
