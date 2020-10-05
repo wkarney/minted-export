@@ -1,0 +1,37 @@
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v3.2.0
+      hooks:
+        - id: check-added-large-files
+          args: ["--maxkb=100000"] # Set to max file size in Github
+        - id: check-merge-conflict
+        - id: detect-private-key
+        - id: requirements-txt-fixer
+  
+    # black: python code formatting
+    - repo: https://github.com/psf/black
+      rev: 20.8b1
+      hooks:
+        - id: black
+  
+    # python import sorting, remove unused imports
+    - repo: https://github.com/sqlalchemyorg/zimports/
+      rev: 0.2.0
+      hooks:
+        - id: zimports
+  
+    # python linting
+    - repo: local
+      hooks:
+        - id: pylint
+          name: pylint
+          entry: pylint
+          language: system
+          types: [python]
+          args:
+            - --max-line-length=89
+            - --disable=C0114 # missing-module-docstring convention
+            - --argument-rgx=[a-z0-9_]{1,30}$
+            - --disable=W0702 # bare exceptions 
+            - --disable=R0801 # Similar lines are fine since two similar scripts provided
+  
