@@ -6,11 +6,12 @@ from selenium.webdriver.chrome.options import Options
 from seleniumrequests import Chrome
 from webdriver_manager.chrome import ChromeDriverManager
 
+# Webdriver options; set to headless
 options = Options()
 options.add_argument("--headless")
 driver = Chrome(executable_path=ChromeDriverManager().install(), options=options)
 
-# URL for minted addressbook
+# URL for minted login page
 URL = "https://www.minted.com/login"
 
 # Set your minted.com email and password as the env vars:

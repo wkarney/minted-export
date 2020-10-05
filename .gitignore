@@ -1,6 +1,9 @@
 # Data exports
 data/*
 
+# direnv environment vars
+.envrc
+
 # VS Code
 .vscode
 
