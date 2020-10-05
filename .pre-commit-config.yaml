@@ -32,4 +32,5 @@ repos:
             - --max-line-length=89
             - --disable=C0114 # missing-module-docstring convention
             - --argument-rgx=[a-z0-9_]{1,30}$
+            - --disable=W0702 # bare exceptions 
   
