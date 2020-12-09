@@ -42,7 +42,7 @@ python minted_api_request.py
 Running the above will scrape all of the events and output the address book fields as csv and xlsx file into a new `data/` dir of the project.
 
 ### Need Assistance?
-Are you running into an issue and don't know what to do next? Write a comment in [this issue feed](https://github.com/wkarney/minted-export/issues/4) and I'll help you get it sorted.
+Are you running into an issue and don't know what to do next? Write a comment in [the discussions page](https://github.com/wkarney/minted-export/discussions) and I'll help you get it sorted.
 
 ### Improvements & Suggestions
 Experienced developer with comments or tweaks? Fork the repo and file a pull request with your changes.
