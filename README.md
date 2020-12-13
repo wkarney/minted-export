@@ -22,7 +22,8 @@ cd minted-export
 ```bash
 python3 -m venv env
 source env/bin/activate
-pip install -r requirements.txt
+pip install --upgrade pip # Optional but helpful
+pip install -r requirements-dev.txt
 ```
 
 >You can deactivate the virtual environment with `deactivate`.
