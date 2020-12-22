@@ -61,11 +61,11 @@ In order to convert this json file to a csv or xlsx file, you can either use a j
 To run the script:
 
 ```bash
-python convert-json.py
+python convert_json.py
 ```
 Running the above will convert the json file and save both csv and xlsx files in a new `data/` dir of the project.
 
-See the [example folder](./example/) for example input/output of the `convert-json.py` script. 🎅
+See the [example folder](./example/) for example input/output of the `convert_json.py` script. 🎅
 
 ### Need Assistance?
 Are you running into an issue and don't know what to do next? Write a comment in [the discussions page](https://github.com/wkarney/minted-export/discussions) and I'll help you get it sorted.
