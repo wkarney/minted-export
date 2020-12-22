@@ -48,7 +48,7 @@ python minted_api_request.py
 Running the above will scrape all of the events and output the address book fields as csv and xlsx file into a new `data/` dir of the project.
 
 ## Getting Started - Manual Approach
-If you have issues setting up the Python environment or running the `minted_api_request.py` script, there's another more manual method that you can implement as well.
+If you are having issues setting up the Python environment or running the `minted_api_request.py` script, there's another more manual method that you can implement as well.
 
 1. Navigate to [Minted](https://www.minted.com) in your browser and login. Once logged in, navigate to https://addressbook.minted.com/api/contacts/contacts/?format=json.
 
