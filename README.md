@@ -4,7 +4,12 @@ So I built a Python script to effectively export the saved address book.
 
 Check out my [blog post](https://medium.com/@willkarnasiewicz/wedding-planning-meets-hacking-1c95be79035e) for more info.
 
-## Getting Started
+## Usage
+Based on feedback (thanks, [@dlithio](https://github.com/wkarney/minted-export/discussions/7#discussion-71480)), there are currently two different ways to implement this tool and export your address book from minted.com.
+1. Fully-automated scripts to export data as csv and xlsx files using Python and Selenium Webdriver. See below for [steps](#Getting-Started---Automated-Method) on how to run this script.
+2. A more manual approach to download the data as a json file, and optionally convert to json to csv or xlsx formats. See below for [steps](#Getting-Started---Automated-Method) on how to run this script.
+
+## Getting Started - Automated Method
 1. Assuming you have [Python 3.6+](https://www.python.org) and a [GitHub](https://www.github.com) account, clone the repo:
 
 ```bash
@@ -41,6 +46,9 @@ python minted_api_request.py
 ```
 
 Running the above will scrape all of the events and output the address book fields as csv and xlsx file into a new `data/` dir of the project.
+
+## Getting Started - Manual Approach
+If you have issues setting up the Python environment or running the `minted_api_request.py` script, there's another more manual method that you can implement as well.
 
 ### Need Assistance?
 Are you running into an issue and don't know what to do next? Write a comment in [the discussions page](https://github.com/wkarney/minted-export/discussions) and I'll help you get it sorted.
