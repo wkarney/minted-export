@@ -50,13 +50,14 @@ Running the above will scrape all of the events and output the address book fiel
 ## Getting Started - Manual Approach
 If you have issues setting up the Python environment or running the `minted_api_request.py` script, there's another more manual method that you can implement as well.
 
-1. Navigate to [Minted](www.minted.com) in your browser and login. Once logged in, navigate to https://addressbook.minted.com/api/contacts/contacts/?format=json.
+1. Navigate to [Minted](https://www.minted.com) in your browser and login. Once logged in, navigate to https://addressbook.minted.com/api/contacts/contacts/?format=json.
 
 2. Save the page source to this directory on your computer. This should be a .json file containing all of your address book entries.
 
 In order to convert this json file to a csv or xlsx file, you can either use a json-csv converter of your choice (e.g. https://json-csv.com), or run the script included in this repo.
 
 3. Make sure you have your python environment setup [(see Steps 1-3 above)](#Getting-Started---Automated-Method).
+
 To run the script:
 
 ```bash
