@@ -50,7 +50,7 @@ Running the above will scrape all of the events and output the address book fiel
 ## Getting Started - Manual Approach
 If you have issues setting up the Python environment or running the `minted_api_request.py` script, there's another more manual method that you can implement as well.
 
-1. Navigate to minted.com in your browser and login. Once logged in, navigate to https://addressbook.minted.com/api/contacts/contacts/?format=json.
+1. Navigate to [Minted](www.minted.com) in your browser and login. Once logged in, navigate to https://addressbook.minted.com/api/contacts/contacts/?format=json.
 
 2. Save the page source to this directory on your computer. This should be a .json file containing all of your address book entries.
 
