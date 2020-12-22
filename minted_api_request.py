@@ -2,8 +2,9 @@ import os
 from time import sleep
 
 import pandas as pd
+import requests
+from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
-from seleniumrequests import Chrome
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Webdriver options; set to headless
@@ -37,9 +38,12 @@ login_submit.click()
 
 sleep(5)  # to load JS and be nice
 
+# Obtain cookies from selenium session
+cookies = {c["name"]: c["value"] for c in driver.get_cookies()}
+
 # Request address book contents as json
-response = driver.request(
-    "GET", "https://addressbook.minted.com/api/contacts/contacts/?format=json"
+response = requests.get(
+    "https://addressbook.minted.com/api/contacts/contacts/?format=json", cookies=cookies
 )
 listings = response.json()
 
