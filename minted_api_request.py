@@ -2,8 +2,10 @@ import os
 from time import sleep
 
 import pandas as pd
+import requests
+from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
-from seleniumrequests import Chrome
+from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Webdriver options; set to headless
@@ -28,18 +30,21 @@ except KeyError:
 driver.get(URL)
 
 # Selenium deals with lgin form
-email_elem = driver.find_element_by_name("email")
+email_elem = driver.find_element(By.NAME, "email")
 email_elem.send_keys(minted_email)
-password_elem = driver.find_element_by_name("password")
+password_elem = driver.find_element(By.NAME, "password")
 password_elem.send_keys(minted_password)
-login_submit = driver.find_element_by_class_name("loginButton")
+login_submit = driver.find_element(By.CLASS_NAME, "loginButton")
 login_submit.click()
 
 sleep(5)  # to load JS and be nice
 
+# Obtain cookies from selenium session
+cookies = {c["name"]: c["value"] for c in driver.get_cookies()}
+
 # Request address book contents as json
-response = driver.request(
-    "GET", "https://addressbook.minted.com/api/contacts/contacts/?format=json"
+response = requests.get(
+    "https://addressbook.minted.com/api/contacts/contacts/?format=json", cookies=cookies
 )
 listings = response.json()
 
