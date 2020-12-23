@@ -7,7 +7,7 @@ Check out my [blog post](https://medium.com/@willkarnasiewicz/wedding-planning-m
 ## Usage
 Based on feedback (thanks, [@dlithio](https://github.com/wkarney/minted-export/discussions/7#discussion-71480)), there are currently two different ways to implement this tool and export your address book from minted.com.
 1. Fully-automated scripts to export data as csv and xlsx files using Python and Selenium Webdriver. See below for [steps](#Getting-Started---Automated-Method) on how to run this script.
-2. A more manual approach to download the data as a json file, and optionally convert to json to csv or xlsx formats. See below for [steps](#Getting-Started---Automated-Method) on how to run this script.
+2. A more manual approach to download the data as a json file, and optionally convert the json file to csv or xlsx formats. See below for [steps](#Getting-Started---Automated-Method) on how to run this script.
 
 ## Getting Started - Automated Method
 1. Assuming you have [Python 3.6+](https://www.python.org) and a [GitHub](https://www.github.com) account, clone the repo:
