@@ -45,7 +45,7 @@ To run the script:
 python minted_api_request.py
 ```
 
-Running the above will scrape all of the events and output the address book fields as csv and xlsx file into a new `data/` dir of the project.
+Running the above will scrape all of the events and output the address book fields as csv and xlsx file into the `data/` dir of the project.
 
 ## Getting Started - Manual Approach
 If you are having issues setting up the Python environment or running the `minted_api_request.py` script, there's another more manual method that you can implement as well.
@@ -63,7 +63,7 @@ To run the script:
 ```bash
 python convert_json.py
 ```
-Running the above will convert the json file and save both csv and xlsx files in a new `data/` dir of the project.
+Running the above will convert the json file and save both csv and xlsx files into the `data/` dir of the project.
 
 See the [example folder](./example/) for example input/output of the `convert_json.py` script. 🎅
 
