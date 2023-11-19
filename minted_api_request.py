@@ -34,7 +34,9 @@ email_elem = driver.find_element(By.NAME, "email")
 email_elem.send_keys(minted_email)
 password_elem = driver.find_element(By.NAME, "password")
 password_elem.send_keys(minted_password)
-login_submit = driver.find_element(By.CLASS_NAME, "loginButton")
+login_submit = driver.find_element(
+    By.XPATH, "/html/body/div/div[3]/div/form/div[2]/button[1]"
+)
 login_submit.click()
 
 sleep(5)  # to load JS and be nice
