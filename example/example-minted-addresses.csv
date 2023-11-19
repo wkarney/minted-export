@@ -1,0 +1,2 @@
+id,url,name,members,labels,groups,address1,address2,locality,administrative_area,postal_code,country,has_mailing_address,external_id,updated_at,notes,data,sort_key
+EXAMPLE-1234,https://addressbook.minted.com/api/contacts/contacts/example-1234/?format=json,Mr. Santa Claus,[],[],[],1 Candy Cane Ln.,,Santa's Village,NP,99999,NP,True,13414314,2019-01-02T03:16:54.481935Z,,{},claussanta

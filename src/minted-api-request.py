@@ -7,7 +7,7 @@ import pandas as pd
 # Webdriver options; set to headless
 options = Options()
 options.add_argument("--headless")
-driver = Chrome(options=options)
+driver = Chrome(chrome_options=options)
 
 # URL for minted addressbook
 url = 'https://www.minted.com/login'
@@ -26,12 +26,12 @@ except KeyError:
 driver.get(url)
 
 # Selenium deals with lgin form
-email_elem = driver.find_element_by_name('email')
-email_elem.send_keys(minted_email)
-password_elem = driver.find_element_by_name('password')
-password_elem.send_keys(minted_password) 
-login_submit = driver.find_element_by_class_name('loginButton')
-login_submit.click()
+emailElem = driver.find_element_by_name('email')
+emailElem.send_keys(minted_email)
+passwordElem = driver.find_element_by_name('password')
+passwordElem.send_keys(minted_password) 
+loginSubmit = driver.find_element_by_class_name('loginButton')
+loginSubmit.click()
 
 sleep(5) # to load JS and be nice
 
