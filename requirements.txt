@@ -43,7 +43,7 @@ python-dateutil==2.8.1
 python-dotenv==1.0.0
 pytz==2020.4
 PyYAML==6.0.1
-requests==2.25.0
+requests==2.31.0
 requests-file==1.5.1
 selenium==4.0.0a7
 selenium-requests==1.3
