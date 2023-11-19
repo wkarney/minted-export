@@ -1,0 +1,3 @@
+# Ensures data directory exists but no files get added to git
+*
+!.gitignore
