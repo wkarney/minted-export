@@ -10,7 +10,7 @@ cfgv==3.4.0
 chardet==3.0.4
 click==8.1.7
 crayons==0.4.0
-cryptography==3.3.1
+cryptography==41.0.4
 distlib==0.3.7
 et-xmlfile==1.0.1
 filelock==3.13.1
