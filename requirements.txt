@@ -27,7 +27,7 @@ lxml==4.6.2
 mccabe==0.6.1
 mypy-extensions==1.0.0
 nodeenv==1.8.0
-numpy==1.19.4
+numpy==1.22.0
 openpyxl==3.0.5
 outcome==1.1.0
 packaging==23.2
