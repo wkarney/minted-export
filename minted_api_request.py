@@ -5,13 +5,15 @@ import pandas as pd
 import requests
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Webdriver options; set to headless
 options = Options()
 options.add_argument("--headless")
-driver = Chrome(executable_path=ChromeDriverManager().install(), options=options)
+service = Service(ChromeDriverManager().install())
+driver = Chrome(service=service, options=options)
 
 # URL for minted login page
 URL = "https://www.minted.com/login"
