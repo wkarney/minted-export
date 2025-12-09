@@ -3,7 +3,7 @@ import json
 import pandas as pd
 
 # Update './contacts.json' to match the path of your downloaded json file, if applicable
-with open("./contacts.json") as f:
+with open("./contacts.json", encoding="utf-8") as f:
     data = json.load(f)
 
 address_book = pd.DataFrame(data)

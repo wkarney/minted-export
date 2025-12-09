@@ -5,12 +5,15 @@ from time import sleep
 from bs4 import BeautifulSoup
 import pandas as pd
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Webdriver options; set to headless
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service, options=options)
 
 # URL for minted addressbook
 URL = "https://www.minted.com/addressbook/my-account/finalize/0?it=utility_nav"
@@ -91,12 +94,12 @@ except KeyError:
 driver.get(URL)
 
 # Login form
-email_elem = driver.find_element_by_name("email")
+email_elem = driver.find_element(By.NAME, "email")
 email_elem.send_keys(minted_email)
-password_elem = driver.find_element_by_name("password")
+password_elem = driver.find_element(By.NAME, "password")
 password_elem.send_keys(minted_password)
-login_submit = driver.find_element_by_xpath(
-    "/html/body/div/div[3]/div/form/div[2]/button[1]"
+login_submit = driver.find_element(
+    By.XPATH, "/html/body/div/div[3]/div/form/div[2]/button[1]"
 )
 login_submit.click()
 

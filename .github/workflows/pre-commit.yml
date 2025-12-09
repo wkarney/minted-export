@@ -28,6 +28,4 @@ jobs:
           pip install -r requirements.txt
       - name: Autoupdate pre-commit
         run: pre-commit autoupdate
-      - uses: pre-commit/action@v3.0.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: pre-commit/action@v3.0.1
