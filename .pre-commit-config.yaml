@@ -1,6 +1,6 @@
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.5.0
+      rev: v6.0.0
       hooks:
         - id: check-added-large-files
           args: ["--maxkb=100000"] # Set to max file size in Github
@@ -10,13 +10,13 @@ repos:
   
     # black: python code formatting
     - repo: https://github.com/psf/black
-      rev: 23.11.0
+      rev: 25.12.0
       hooks:
         - id: black
   
     # python import sorting, remove unused imports
     - repo: https://github.com/sqlalchemyorg/zimports/
-      rev: v0.6.1
+      rev: v0.7.0
       hooks:
         - id: zimports
   
