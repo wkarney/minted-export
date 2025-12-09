@@ -4,7 +4,7 @@ So I built a Python script to effectively export the saved address book.
 
 Check out my [blog post](https://medium.com/@willkarnasiewicz/wedding-planning-meets-hacking-1c95be79035e) for more info.
 
-## 2025 Update
+## 2025 Update (Special thanks to @hantswilliams for his contributions!)
 Minted has updated their website since the original script was written. Key changes include:
 - **New login page**: Login is now at `https://login.minted.com/` (previously `https://www.minted.com/login`)
 - **Updated form fields**: The email field ID changed from `email` to `identifierMNTD`

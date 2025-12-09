@@ -48,7 +48,7 @@ cookies = {c["name"]: c["value"] for c in driver.get_cookies()}
 
 # Request address book contents as json
 response = requests.get(
-    "https://addressbook.minted.com/api/contacts/contacts/?format=json", cookies=cookies
+    "https://addressbook.minted.com/api/contacts/contacts/?format=json", cookies=cookies, timeout=300
 )
 listings = response.json()
 

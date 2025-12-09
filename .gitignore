@@ -1,6 +1,9 @@
 # Data exports
 data/*
 
+# Ignore .DS_Store files (macOS)
+.DS_Store
+
 # direnv environment vars
 .envrc
 

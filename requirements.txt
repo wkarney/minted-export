@@ -1,6 +1,8 @@
-pandas
-selenium
-requests
 beautifulsoup4
-webdriver-manager
 openpyxl
+pandas
+pre-commit
+pylint
+requests
+selenium
+webdriver-manager

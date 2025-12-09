@@ -1,3 +1,5 @@
+# pylint: skip-file
+
 """
 Minted Address Book Export Script
 
