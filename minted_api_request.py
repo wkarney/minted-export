@@ -32,12 +32,12 @@ except KeyError:
 driver.get(URL)
 
 # Selenium deals with lgin form
-email_elem = driver.find_element(By.NAME, "email")
+email_elem = driver.find_element(By.XPATH, '//*[@id="identifierMNTD"]')
 email_elem.send_keys(minted_email)
-password_elem = driver.find_element(By.NAME, "password")
+password_elem = driver.find_element(By.XPATH, '//*[@id="password"]')
 password_elem.send_keys(minted_password)
 login_submit = driver.find_element(
-    By.XPATH, "/html/body/div/div[3]/div/form/div[2]/button[1]"
+    By.XPATH, '//*[@id="__next"]/div[3]/div/form/div[2]/div[1]/button'
 )
 login_submit.click()
 
@@ -48,7 +48,9 @@ cookies = {c["name"]: c["value"] for c in driver.get_cookies()}
 
 # Request address book contents as json
 response = requests.get(
-    "https://addressbook.minted.com/api/contacts/contacts/?format=json", cookies=cookies, timeout=300
+    "https://addressbook.minted.com/api/contacts/contacts/?format=json",
+    cookies=cookies,
+    timeout=300,
 )
 listings = response.json()
 
