@@ -30,5 +30,3 @@ jobs:
       - name: Autoupdate pre-commit
         run: pre-commit autoupdate
       - uses: pre-commit/action@v3.0.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
