@@ -9,15 +9,17 @@ and exports all contacts to CSV and Excel formats.
 
 import os
 from time import sleep
+
 import pandas as pd
 import requests
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -55,7 +57,9 @@ def setup_driver(headless=False):
     driver = Chrome(service=service, options=options)
 
     # Further avoid detection
-    driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+    driver.execute_script(
+        "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+    )
 
     # Make sure window is visible and positioned on screen
     sleep(1)
@@ -104,7 +108,9 @@ def login_to_minted(driver, email, password):
             inputs = driver.find_elements(By.TAG_NAME, "input")
             print(f"Found {len(inputs)} input fields:")
             for inp in inputs[:10]:  # First 10
-                print(f"  - id='{inp.get_attribute('id')}' name='{inp.get_attribute('name')}' type='{inp.get_attribute('type')}'")
+                print(
+                    f"  - id='{inp.get_attribute('id')}' name='{inp.get_attribute('name')}' type='{inp.get_attribute('type')}'"
+                )
             return False
 
         sleep(0.5)
@@ -171,6 +177,7 @@ def login_to_minted(driver, email, password):
         else:
             # Try pressing Enter on password field as fallback
             from selenium.webdriver.common.keys import Keys
+
             password_field.send_keys(Keys.RETURN)
             print("Submitted form via Enter key")
 
@@ -191,7 +198,9 @@ def login_to_minted(driver, email, password):
 
         # Check for any error messages on the page
         try:
-            error_elements = driver.find_elements(By.CSS_SELECTOR, "[class*='error'], [class*='Error'], [role='alert']")
+            error_elements = driver.find_elements(
+                By.CSS_SELECTOR, "[class*='error'], [class*='Error'], [role='alert']"
+            )
             for elem in error_elements:
                 if elem.text.strip():
                     print(f"Error on page: {elem.text}")
@@ -199,16 +208,16 @@ def login_to_minted(driver, email, password):
             pass
 
         # Even if still on login page, let user manually complete login if needed
-        print("\n" + "="*50)
+        print("\n" + "=" * 50)
         print("LOGIN REQUIRES MANUAL INTERVENTION")
-        print("="*50)
+        print("=" * 50)
         print("The browser window should be open.")
         print("Please complete the login manually if needed.")
         print("(There may be a CAPTCHA, 2FA, or other verification)")
         print("")
         print("After you've logged in successfully, press Enter here.")
         print("Or press Ctrl+C to abort.")
-        print("="*50)
+        print("=" * 50)
 
         try:
             input("\n>>> Press Enter when logged in: ")
@@ -227,7 +236,9 @@ def login_to_minted(driver, email, password):
         return False
 
     except TimeoutException:
-        print("ERROR: Login page elements not found. The page structure may have changed.")
+        print(
+            "ERROR: Login page elements not found. The page structure may have changed."
+        )
         return False
 
 
@@ -267,11 +278,17 @@ def scrape_address_book(driver):
 
     try:
         # Wait for contacts table to load
-        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "[data-cy='abk_contactsTable']")))
+        wait.until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "[data-cy='abk_contactsTable']")
+            )
+        )
         sleep(2)  # Additional wait for dynamic content
 
         # Find all contact rows
-        contact_rows = driver.find_elements(By.CSS_SELECTOR, "[data-cy='abk_contactRow']")
+        contact_rows = driver.find_elements(
+            By.CSS_SELECTOR, "[data-cy='abk_contactRow']"
+        )
         print(f"Found {len(contact_rows)} contacts")
 
         for i, row in enumerate(contact_rows):
@@ -279,7 +296,9 @@ def scrape_address_book(driver):
                 contact_data = extract_contact_from_row(driver, row, i)
                 if contact_data:
                     contacts.append(contact_data)
-                    print(f"  Extracted contact {i+1}: {contact_data.get('name', 'Unknown')}")
+                    print(
+                        f"  Extracted contact {i+1}: {contact_data.get('name', 'Unknown')}"
+                    )
             except Exception as e:
                 print(f"  Error extracting contact {i+1}: {e}")
 
@@ -309,7 +328,9 @@ def extract_contact_from_row(driver, row, index):
 
     # Try to expand the row to get more details
     try:
-        expand_button = row.find_element(By.CSS_SELECTOR, "[data-cy='abk_expandContactButton'] button")
+        expand_button = row.find_element(
+            By.CSS_SELECTOR, "[data-cy='abk_expandContactButton'] button"
+        )
         driver.execute_script("arguments[0].click();", expand_button)
         sleep(0.5)  # Wait for expansion
 
@@ -319,7 +340,7 @@ def extract_contact_from_row(driver, row, index):
 
         # Parse expanded content for additional address fields
         full_text = row.text
-        lines = full_text.split('\n')
+        lines = full_text.split("\n")
 
         # Try to identify city, state, zip from the expanded text
         for line in lines:
@@ -332,7 +353,10 @@ def extract_contact_from_row(driver, row, index):
                 continue
             # Look for city, state ZIP pattern
             import re
-            city_state_zip = re.search(r'^([^,]+),\s*([A-Z]{2})\s+(\d{5}(?:-\d{4})?)$', line)
+
+            city_state_zip = re.search(
+                r"^([^,]+),\s*([A-Z]{2})\s+(\d{5}(?:-\d{4})?)$", line
+            )
             if city_state_zip:
                 contact["city"] = city_state_zip.group(1)
                 contact["state"] = city_state_zip.group(2)
@@ -360,7 +384,9 @@ def extract_contact_from_row(driver, row, index):
 def get_contact_from_edit_modal(driver, row, contact):
     """Open the edit modal to get full contact details."""
     try:
-        edit_button = row.find_element(By.CSS_SELECTOR, "[data-cy='abk_editContactButton'] button")
+        edit_button = row.find_element(
+            By.CSS_SELECTOR, "[data-cy='abk_editContactButton'] button"
+        )
         driver.execute_script("arguments[0].click();", edit_button)
         sleep(1)  # Wait for modal to open
 
@@ -415,6 +441,7 @@ def get_contact_from_edit_modal(driver, row, contact):
 
         # If no close button found, press Escape
         from selenium.webdriver.common.keys import Keys
+
         driver.find_element(By.TAG_NAME, "body").send_keys(Keys.ESCAPE)
         sleep(0.5)
 
@@ -438,9 +465,15 @@ def export_contacts(contacts, output_dir="./data"):
 
     # Reorder columns if they exist
     preferred_order = [
-        "name", "first_name", "last_name",
-        "street_line1", "street_line2",
-        "city", "state", "zip", "country"
+        "name",
+        "first_name",
+        "last_name",
+        "street_line1",
+        "street_line2",
+        "city",
+        "state",
+        "zip",
+        "country",
     ]
 
     existing_cols = [col for col in preferred_order if col in df.columns]
@@ -499,6 +532,7 @@ def main():
     except Exception as e:
         print(f"Error: {e}")
         import traceback
+
         traceback.print_exc()
 
     finally:
