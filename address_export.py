@@ -5,13 +5,15 @@ from time import sleep
 from bs4 import BeautifulSoup
 import pandas as pd
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Webdriver options; set to headless
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
-driver = webdriver.Chrome(ChromeDriverManager().install(), options)
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service, options=options)
 
 # URL for minted addressbook
 URL = "https://www.minted.com/addressbook/my-account/finalize/0?it=utility_nav"
