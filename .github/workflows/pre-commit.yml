@@ -13,13 +13,13 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.9]
+        python-version: [3.12]
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - name: Setup python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4.7.1
+        uses: actions/setup-python@v6.1.0
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
@@ -29,3 +29,5 @@ jobs:
       - name: Autoupdate pre-commit
         run: pre-commit autoupdate
       - uses: pre-commit/action@v3.0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
